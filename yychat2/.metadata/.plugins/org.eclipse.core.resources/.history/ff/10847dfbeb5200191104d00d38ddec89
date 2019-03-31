@@ -1,0 +1,5 @@
+package yychat.model;
+
+public interface MessageType {
+
+}
