@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;FriendChat.java&apos; to &apos;yy.com/src/ClientLogin&apos;&#x0D;&#x0A;- Original project: &apos;yy.com&apos;&#x0D;&#x0A;- Destination element: &apos;yy.com/src/ClientLogin&apos;&#x0D;&#x0A;- Original element: &apos;ClientLogin.FriendChat.java&apos;" description="Copy compilation unit" destination="/src&lt;ClientLogin" element1="/src&lt;ClientLogin{FriendChat.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1554080594629" units="1" version="1.0"/>
+</session>
