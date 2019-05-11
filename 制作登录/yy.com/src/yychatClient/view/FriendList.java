@@ -7,9 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.HashMap;
 
 import javax.swing.*;
+
+import com.yychat.controller.ClientConnetion;
+
+import yychat.model.Message;
 
 public class FriendList extends JFrame implements ActionListener,MouseListener
 {//接口
@@ -56,7 +63,7 @@ public class FriendList extends JFrame implements ActionListener,MouseListener
 		for(int i=1;i<MYFRIENDCOUNT;i++){
 			myFriendLabel[i]=new JLabel(i+"",new ImageIcon("images/yy2.gif"),JLabel.LEFT);
 			myFriendLabel[i].setEnabled(false);
-			if(Integer.parseInt(userName)==i) myFriendLabel[i].setEnabled(true);
+			//if(Integer.parseInt(userName)==i) myFriendLabel[i].setEnabled(true);
 			myFriendLabel[i].addMouseListener(this);
 			myFriendListJPanel.add(myFriendLabel[i]);
 		  }
@@ -104,6 +111,7 @@ public class FriendList extends JFrame implements ActionListener,MouseListener
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setTitle(userName);
+		this.setIconImage(new ImageIcon("images/yy3.gif").getImage());
 		this.setVisible(true);
 	}
 	public static void main(String[] args) {
@@ -161,5 +169,22 @@ public class FriendList extends JFrame implements ActionListener,MouseListener
     	for(int i=0;i<count;i++){
     		myFriendLabel[Integer.parseInt(friendName[i])].setEnabled(true);
     	}
+    	//激活新登录好友图标
+    	Message mess=new Message();
+    	mess.setSender(userName);
+    	mess.setReceiver("Sever");
+    	mess.setContent(userName);
+		mess.setMessageType(Message.message_UpnewFriend);
+		ObjectOutputStream oos;
+		try {
+			oos=new ObjectOutputStream(ClientConnetion.s.getOutputStream());
+			oos.writeObject(mess);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			
     }
+	public void UpNewOnlineFriend(String content) {
+       myFriendLabel[Integer.parseInt(content)].setEnabled(true);
+	}
 }

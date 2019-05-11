@@ -55,8 +55,27 @@ public class ServerReceiverThread extends Thread{
 				//发送mess
 				Socket s1=(Socket)hmSocket.get(sender);
 				sendMessage(s1,mess);
-				
 			}
+				
+				if(mess.getMessageType().equals(Message.message_UpnewFriend)){
+					Set friendSet1=StartServer.hmSocket.keySet();
+					Iterator it1=friendSet1.iterator();
+					String friendName1;
+					mess.setMessageType(Message.message_upOnlineFriend);
+					while(it1.hasNext()){
+						friendName1=(String)it1.next();
+						System.out.println("键值为："+friendName1);
+						if(!friendName1.equals(mess.getSender())){
+							Socket s2=(Socket)hmSocket.get(friendName1);
+							mess.setReceiver(friendName1);
+							ObjectOutputStream oos;
+							oos=new ObjectOutputStream(s2.getOutputStream());
+							oos.writeObject(mess);
+						}
+						System.out.println("有执行代码："+mess.getReceiver());
+						}		
+				}
+				
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}

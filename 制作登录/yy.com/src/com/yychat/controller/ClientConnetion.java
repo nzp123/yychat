@@ -11,7 +11,7 @@ import yychat.model.Message;
 import yychat.model.User;
 
 public class ClientConnetion {
-     public  Socket s;//静态成员变量
+     public static Socket s;//静态成员变量
      public static HashMap hmSocket=new HashMap<String,Socket>();
      
 	public ClientConnetion(){
