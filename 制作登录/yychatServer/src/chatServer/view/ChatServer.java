@@ -16,6 +16,7 @@ public class ChatServer extends JFrame implements ActionListener{
     	jb1=new JButton("启动服务器");
     	jb1.addActionListener(this);
     	jb2=new JButton("关闭服务器");
+    	jb2.addActionListener(this);
     	jp=new JPanel();
     	jp.add(jb1);jp.add(jb2);
     	
@@ -36,7 +37,7 @@ public class ChatServer extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		new StartServer();
+		if(arg0.getSource()==jb1)new StartServer();
 	}
 
 }

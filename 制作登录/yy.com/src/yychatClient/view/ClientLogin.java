@@ -90,7 +90,9 @@ public class ClientLogin extends JFrame implements ActionListener {//¿‡√˚£¨ºÃ≥–
 			
 			Message mess=new ClientConnetion().loginValidate(user);
 			if(mess.getMessageType().equals("1")){
-				FriendList friendList=new FriendList(userName);
+				
+				String friendString=mess.getContent();
+				FriendList friendList=new FriendList(userName,friendString);
 				hmFriendList.put(userName,friendList);
 				
 				Message mess1=new Message();

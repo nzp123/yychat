@@ -49,14 +49,10 @@ public class FriendChat1 extends JFrame implements ActionListener{
 		this.setVisible(true);
 		
 	}
-		
-	
 	
 	public static void main(String[] args) {
 		//FriendChat friendChat=new FriendChat();
 	}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
